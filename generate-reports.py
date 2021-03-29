@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as tck
 
 name = 'Miles'
-years = range(1880, 2019)
+years = range(1880, 2020)
 milesPerHourAllYears = []
 
 for year in years:
