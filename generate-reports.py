@@ -22,7 +22,7 @@ for year in years:
 	print(f"Birth rate in {year}: {milesPerHour:.5f} mph")
 
 fig, ax = plt.subplots()
-plt.bar(years, milesPerHourAllYears)
+plt.step(years, milesPerHourAllYears, where='mid')
 
 fig.subplots_adjust(left=0.05, right=0.85, top=0.9, bottom=0.125)
 
