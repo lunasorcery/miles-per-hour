@@ -1,11 +1,12 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
+
 import csv
 import calendar
 import matplotlib.pyplot as plt
 import matplotlib.ticker as tck
 
 name = 'Miles'
-years = range(1880, 2021)
+years = range(1880, 2023)
 milesPerHourAllYears = []
 
 for year in years:
@@ -22,14 +23,16 @@ for year in years:
 
 fig, ax = plt.subplots()
 plt.bar(years, milesPerHourAllYears)
+
+fig.subplots_adjust(left=0.05, right=0.85, top=0.9, bottom=0.125)
+
+ax.yaxis.tick_right()
+ax.yaxis.set_label_position('right')
 ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
-plt.xlabel('Year')
-plt.ylabel(f"Birth Rate ({name}/Hour)")
+
+ax.set_xlabel('Year', labelpad=5, fontsize=12)
+ax.set_ylabel(f"Birth Rate ({name}/Hour)", labelpad=15, fontsize=12)
+
 plt.title(f"How Often People Called '{name}' Are Born In The U.S.")
 plt.savefig('out.png', dpi=200)
 plt.savefig('out.svg')
-
-# wide version for twitter
-# make the figure 16:8 so the overall image is ~16:9
-ax.set_aspect(((max(years)-min(years))/max(milesPerHourAllYears))/(16/8))
-plt.savefig('out-wide.png', dpi=200, bbox_inches='tight', pad_inches=0.3)
